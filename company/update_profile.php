@@ -15,10 +15,11 @@ if (isset($_POST['update'])) {
             echo "Can't upload file";
         }
     }
-    $location = $_POST['location'];
-    $description = $_POST['description'];
-    $website = $_POST['website'];
-    $phone = $_POST['contact'];
+    $location    = mysqli_real_escape_string($conn, $_POST['location']);
+    $description = mysqli_real_escape_string($conn, $_POST['description']);
+    $website     = mysqli_real_escape_string($conn, $_POST['website']);
+    $phone       = mysqli_real_escape_string($conn, $_POST['contact']);
+
 
 
     $query = "UPDATE company SET logo='$file', location='$location', description='$description', website='$website', contact='$phone' WHERE company_id='$company_id'";

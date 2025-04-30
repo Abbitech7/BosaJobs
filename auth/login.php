@@ -66,11 +66,23 @@ include_once '../config/db.php';
                             }
                         } elseif ($role == 'candidate') {
                             if (password_verify($password, $row['password'])) {
-                                $_SESSION['candidate_id'] = $row['id'];
-                                echo "<script>
-                                alert('Login Successful!');
-                                window.location.href = '../candidate/dashboard.php';
-                                </script>";
+                                $sql = "SELECT * FROM candidates WHERE candidate_id='$row[id]'";
+                                $result = mysqli_query($conn, $sql);
+                                if (mysqli_num_rows($result) == 0) {
+                                    $query = "INSERT INTO candidates(candidate_id) VALUES('$row[id]')";
+                                    mysqli_query($conn, $query);
+                                    $_SESSION['candidate_id'] = $row['id'];
+                                    echo "<script>
+                                    alert('Login Successful!');
+                                    window.location.href = '../candidate/dashboard.php';
+                                    </script>";
+                                }else {
+                                    $_SESSION['candidate_id'] = $row['id'];
+                                    echo "<script>
+                                    alert('Login Successful!');
+                                    window.location.href = '../candidate/dashboard.php';
+                                    </script>";
+                                }
                             } else {
                                 array_push($error, "Invalid Password!");
                             }
