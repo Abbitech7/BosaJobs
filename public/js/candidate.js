@@ -156,66 +156,6 @@ function changeLanguage(lang) {
     });
 }
 
-function showDashboard() {
-    setActiveNav('dashboard');
-    document.getElementById('dashboard-content').style.display = 'block';
-    document.getElementById('search-jobs-content').style.display = 'none';
-    document.getElementById('jobs-applied-content').style.display = 'none';
-    document.getElementById('recent-jobs-content').style.display = 'none';
-    document.getElementById('companies-content').style.display = 'none';
-    document.getElementById('profile-content').style.display = 'none';
-}
-
-function showSearchJobs() {
-    setActiveNav('search_jobs');
-    document.getElementById('dashboard-content').style.display = 'none';
-    document.getElementById('search-jobs-content').style.display = 'block';
-    document.getElementById('jobs-applied-content').style.display = 'none';
-    document.getElementById('recent-jobs-content').style.display = 'none';
-    document.getElementById('companies-content').style.display = 'none';
-    document.getElementById('profile-content').style.display = 'none';
-}
-
-function showJobsApplied() {
-    setActiveNav('jobs_applied');
-    document.getElementById('dashboard-content').style.display = 'none';
-    document.getElementById('search-jobs-content').style.display = 'none';
-    document.getElementById('jobs-applied-content').style.display = 'block';
-    document.getElementById('recent-jobs-content').style.display = 'none';
-    document.getElementById('companies-content').style.display = 'none';
-    document.getElementById('profile-content').style.display = 'none';
-}
-
-function showRecentJobs() {
-    setActiveNav('recent_jobs');
-    document.getElementById('dashboard-content').style.display = 'none';
-    document.getElementById('search-jobs-content').style.display = 'none';
-    document.getElementById('jobs-applied-content').style.display = 'none';
-    document.getElementById('recent-jobs-content').style.display = 'block';
-    document.getElementById('companies-content').style.display = 'none';
-    document.getElementById('profile-content').style.display = 'none';
-}
-
-function showCompanies() {
-    setActiveNav('view_companies');
-    document.getElementById('dashboard-content').style.display = 'none';
-    document.getElementById('search-jobs-content').style.display = 'none';
-    document.getElementById('jobs-applied-content').style.display = 'none';
-    document.getElementById('recent-jobs-content').style.display = 'none';
-    document.getElementById('companies-content').style.display = 'block';
-    document.getElementById('profile-content').style.display = 'none';
-}
-
-function showProfile() {
-    setActiveNav('profile');
-    document.getElementById('dashboard-content').style.display = 'none';
-    document.getElementById('search-jobs-content').style.display = 'none';
-    document.getElementById('jobs-applied-content').style.display = 'none';
-    document.getElementById('recent-jobs-content').style.display = 'none';
-    document.getElementById('companies-content').style.display = 'none';
-    document.getElementById('profile-content').style.display = 'block';
-}
-
 function setActiveNav(item) {
     document.querySelectorAll('.sidebar a').forEach(link => {
         link.classList.remove('active');

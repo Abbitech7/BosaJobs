@@ -45,6 +45,9 @@ body {
     margin-left: 250px;
     padding: 20px;
 }
+#search-jobs-content{
+    padding-top: 50px;
+}
 .search-container {
     background-color: #fff;
     padding: 20px;
