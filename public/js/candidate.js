@@ -178,5 +178,20 @@ function previewProfilePicture(input) {
 function logout() {
     alert("Logging out...");
 }
-
+function showConfirmation() {
+    const letter = document.getElementById('cover_letter').value.trim();
+    if (letter === '') {
+        alert("Please enter a cover letter.");
+        return false;
+    }
+    document.getElementById('confirmation').style.display = 'block';
+    return true;
+}
+const applicationForm = document.querySelector('.application-form');
+const applicationButton = document.querySelector('#apply');
+applicationButton.addEventListener('click', function(event) {
+    event.preventDefault(); 
+    applicationForm.style.display = 'block';
+    applicationButton.style.display = 'none';
+});
 changeLanguage('en');

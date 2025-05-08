@@ -2,7 +2,7 @@
 include 'header.php';
 $job_list = [];
 $search = '';
-$head='Your search results';
+$head='Your search results for';
 if (isset($_POST['search'])) {
     $search = mysqli_real_escape_string($conn, $_POST['search-keyword']);
 
@@ -46,8 +46,8 @@ if (isset($_POST['search'])) {
 }
 
 if (empty($job_list)) {
-    $job_list = fetch_jobs($conn);
-    $head='Recent Jobs';
+    $job_list = array();
+    $head='No search results found for';
 }
 ?>
 <div id="search-jobs-content">

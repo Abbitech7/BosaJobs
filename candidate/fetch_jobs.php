@@ -10,6 +10,7 @@ function fetch_jobs($conn) {
                 j.type,
                 j.skill,
                 j.deadline,
+                j.created_at,
                 u.name AS company_name,
                 u.email AS company_email,
                 c.logo AS company_logo
@@ -34,10 +35,9 @@ function fetch_jobs($conn) {
                 'name' => $row['company_name'],
                 'email' => $row['company_email'],
                 'logo' => $row['company_logo'],
+                'created_at' => $row['created_at'],
             ];
         }
     }
     return $job_list;
 }
-
-?>

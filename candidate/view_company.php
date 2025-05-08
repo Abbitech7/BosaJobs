@@ -1,23 +1,25 @@
-<?php include 'header.php'; ?>
+<?php 
+include 'header.php'; 
+include 'fetch_company.php';
+?>
 <div id="companies-content">
-            <h2 class="section-title" data-translate="companies">Companies You May Find</h2>
-            <div class="card">
+    <h2 class="section-title" data-translate="companies">Companies You May Find</h2>
+    <?php $company_list=fetch_company($conn) ?>
+    <div class="card">
+        <?php if (empty($company_list)) : ?>
+            <p data-translate="no_companies_found">No companies found.</p>
+        <?php else : ?>
+            <?php foreach ($company_list as $company) : ?>
                 <div class="company-card">
-                    <h3>Cynoox Technology PLC</h3>
+                    <h3><?php echo htmlspecialchars($company['name']); ?></h3>
                     <div class="job-meta">
-                        <span data-translate="location">Location:</span> Addis Ababa<br>
-                        <span data-translate="industry">Industry:</span> Software Development
+                        <span data-translate="location">Location:</span> <?php echo htmlspecialchars($company['location']); ?><br>
+                        <span data-translate="industry">Industry:</span> <?php echo htmlspecialchars($company['industry']); ?>
                     </div>
                     <a href="#" class="btn" data-translate="see_more">See More</a>
                 </div>
-                <div class="company-card">
-                    <h3>BONSA RIDE</h3>
-                    <div class="job-meta">
-                        <span data-translate="location">Location:</span> Addis Ababa<br>
-                        <span data-translate="industry">Industry:</span> Transportation
-                    </div>
-                    <a href="#" class="btn" data-translate="see_more">See More</a>
-                </div>
-            </div>
-        </div>
-        <?php include 'footer.php' ?>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </div>
+</div>
+<?php include 'footer.php' ?>

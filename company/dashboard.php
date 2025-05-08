@@ -48,14 +48,13 @@ if (mysqli_num_rows($result) > 0) {
             <?php
             echo '
             <img src="../uploads/images/' . $logo . '" alt="Company Logo">
-            <h2>' . $name . '</h2>
-            ';
+            <h2>' . $name . '</h2>';
             ?>
         </div>
         <a href="#" onclick="showDashboard()" data-translate="home">Home</a>
         <a href="#" onclick="showCompanyProfile()" data-translate="company_profile">Company Profile</a>
         <a href="#" onclick="showJobForm()" data-translate="post_job">Post New Job</a>
-        <a href="logout.php" class="logout" onclick="logout()" data-translate="logout">Logout</a>
+        <a href="../auth/logout.php" class="logout" onclick="logout()" data-translate="logout">Logout</a>
     </div>
 
     <div class="main">

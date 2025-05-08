@@ -39,7 +39,7 @@ $candidate_id = $_SESSION['candidate_id'];
         <a href="recent_jobs.php" class="<?= $currentPage == 'recent_jobs' ? 'active' : '' ?>" data-translate="recent_jobs">Recent Jobs</a>
         <a href="view_company.php" class="<?= $currentPage == 'view_company' ? 'active' : '' ?>" data-translate="view_companies">View Companies</a>
         <a href="profile.php" class="<?= $currentPage == 'profile' ? 'active' : '' ?>" data-translate="profile">Profile</a>
-        <a href="logout.php" class="logout" onclick="logout()" data-translate="logout">Logout</a>
+        <a href="../auth/logout.php" class="logout" onclick="logout()" data-translate="logout">Logout</a>
     </div>
 
     <div class="main">
