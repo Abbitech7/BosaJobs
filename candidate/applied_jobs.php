@@ -51,15 +51,13 @@ if (mysqli_num_rows($result) > 0) {
                 foreach ($job_list as $job) {
                     echo '<h3>' . htmlspecialchars($job['title']) . '</h3>
                         <div class="job-meta">
-                            <span data-translate="company">Company:</span> ' . htmlspecialchars($job['name']) . '<br>
-                            <span data-translate="location">Location:</span> ' . htmlspecialchars($job['location']) . '<br>
-                            <span data-translate="applied_date">Applied date:</span> ' . htmlspecialchars($job['applied_at']) . '<br>
-                            <span data-translate="status">Status:</span> Under Review
+                            <p data-translate="company">Company:   <strong>' . htmlspecialchars($job['name']) . '</strong></p><br>
+                            <p data-translate="location"><i class="fas fa-map-marker-alt"></i> Location:   <strong>' . htmlspecialchars($job['location']) . '</strong></p><br>
+                            <p data-translate="applied_date"><i class="fas fa-alarm-clock"></i> Applied date:  <strong>' . htmlspecialchars($job['applied_at']) . '</strong></p><br>
                         </div>
-                        <p>' . htmlspecialchars($job['description']) . '</p>
+                        <p>' .substr( htmlspecialchars($job['description']),0,300) . '</p>
                         <div class="job-actions">
-                            <a href="#" class="btn" data-translate="see_more">See More</a>
-                            <a href="#" class="btn btn-danger" data-translate="withdraw">Withdraw</a>
+                            <a href="job_detail.php?job_id'.$job['id'].'" class="btn" data-translate="see_more">See More</a>
                         </div>';
                 }
             }

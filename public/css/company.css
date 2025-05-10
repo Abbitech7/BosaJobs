@@ -1,3 +1,4 @@
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 10px;
@@ -14,6 +15,9 @@ body {
     display: flex;
     flex-direction: column;
     padding-top: 20px;
+    transition: width 0.3s ease;
+    left: 0;
+    z-index: 1000;
 }
 .sidebar .company-info {
     text-align: center;
@@ -33,6 +37,7 @@ body {
     display: block;
     font-size: 16px;
     transition: background-color 0.3s ease;
+    white-space: nowrap;
 }
 .sidebar a:hover {
     background-color: rgba(20, 40, 59, 0.7);
@@ -40,6 +45,7 @@ body {
 .main {
     margin-left: 260px;
     padding: 20px;
+    transition: margin-left 0.3s ease;
 }
 .card {
     flex: 1;
@@ -87,6 +93,23 @@ body {
     border-radius: 6px;
     border: 1px solid rgba(100, 149, 237, 0.2);
 }
+.view-applicants {
+  background-color: rgba(30, 58, 95, 0.9);
+  color: #fff;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin-right: 10px;
+}
+.view-applicants:hover {
+  background-color: rgba(65, 105, 225, 0.8);
+  transform: translateY(-1px);
+}
 #form-container form, .profile-info {
     max-width: 600px;
     margin: 0 auto;
@@ -118,10 +141,12 @@ button:hover {
     transform: translateY(-1px);
 }
 .language-selector {
+    display: flex;
     position: absolute;
     top: 20px;
     right: 20px;
-    z-index: 100;
+    z-index: 1000;
+    width: fit-content;
 }
 .language-btn {
     background: rgba(25, 55, 100, 0.7);
@@ -140,4 +165,129 @@ button:hover {
 .language-btn.active {
     background: rgba(65, 105, 225, 0.7);
     font-weight: bold;
+}
+
+
+.menu-toggle {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1001;
+    background :none;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 20px;
+    width: fit-content;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+}
+
+.overlay.active {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 0;
+        overflow: hidden;
+    }
+
+    .sidebar.active {
+        width: 250px;
+    }
+
+    .main {
+        margin-left: 0;
+        padding-top: 80px;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .language-selector {
+        top: 20px;
+    }
+
+    .section {
+        flex-direction: column;
+    }
+
+    .card {
+        margin: 10px 0;
+    }
+
+    .job-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .job-card button {
+        margin-top: 10px;
+        width: 100%;
+    }
+}
+
+@media (max-width: 992px) and (min-width: 769px) {
+    .sidebar {
+        width: 70px;
+        overflow: hidden;
+    }
+
+    .sidebar .company-info {
+        padding: 0 5px;
+    }
+
+    .sidebar img {
+        width: 50px;
+    }
+
+    .sidebar a {
+        text-align: center;
+        padding: 15px 5px;
+    }
+
+    .sidebar a span {
+        display: none;
+    }
+
+    .sidebar a i {
+        display: block;
+        font-size: 20px;
+        margin: 0 auto;
+    }
+
+    .main {
+        margin-left: 80px;
+    }
+}
+
+@media (max-width: 576px) {
+    #form-container form, .profile-info {
+        padding: 15px;
+    }
+
+    textarea, input[type="text"], 
+    input[type="email"], input[type="number"], 
+    select, input[type="date"], input[type="file"] {
+        padding: 8px;
+    }
+
+    button {
+        padding: 8px 15px;
+        width: 100%;
+    }
 }

@@ -7,10 +7,10 @@
 }
 
 body {
-    color: #fff;
+    color: #000;
     line-height: 1.6;
     overflow-x: hidden;
-    background-color: #0c2340;
+    background: #f4f4f4;
 }
 
 .container {
@@ -62,10 +62,28 @@ body {
     right: 20px;
     z-index: 100;
 }
+.language-notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 5px;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 9999;
+}
+
+.language-notification.show {
+    transform: translateY(0);
+    opacity: 1;
+}
 
 .language-btn {
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
+    background: #fff;
+    color: #000;
     border: none;
     padding: 8px 15px;
     border-radius: 20px;
@@ -79,34 +97,62 @@ body {
 .language-btn:hover {
     background: rgba(0, 0, 0, 0.7);
 }
-
-.language-dropdown {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background: rgba(0, 0, 0, 0.8);
-    border-radius: 10px;
-    padding: 10px 0;
-    min-width: 150px;
-    display: none;
+/* Language Dropdown in Navbar */
+.language-dropdown-nav {
+    position: relative;
 }
 
-.language-dropdown a {
-    color: white;
+.language-dropdown-nav .dropdown-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 15px;
+}
+
+.language-dropdown-nav .dropdown-arrow {
+    font-size: 12px;
+    transition: transform 0.3s ease;
+}
+
+.language-dropdown-nav .dropdown-menu {
+    position: absolute;
+    right: 0;
+    min-width: 180px;
+    background: #fff;
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    padding: 10px 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1001;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.language-dropdown-nav:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+}
+
+.language-dropdown-nav .dropdown-menu a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     padding: 8px 20px;
-    display: block;
+    color: #000;
     text-decoration: none;
     transition: all 0.3s ease;
 }
 
-.language-dropdown a:hover {
+.language-dropdown-nav .dropdown-menu a:hover {
     background: rgba(255, 255, 255, 0.1);
+    color: #4f46e5;
 }
 
-.language-selector:hover .language-dropdown {
-    display: block;
+.language-check {
+    width: 16px;
+    text-align: center;
 }
-
 /* Header Styles */
 #header {
     position: fixed;
@@ -116,12 +162,12 @@ body {
     z-index: 1000;
     padding: 20px 0;
     transition: all 0.3s ease;
-    background: rgba(0, 0, 0, 0.5);
+    background: #fff;
     backdrop-filter: blur(10px);
 }
 
 #header.scrolled {
-    background: rgba(0, 0, 0, 0.9);
+    background: #fff;
     padding: 15px 0;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
 }
@@ -137,8 +183,8 @@ body {
     align-items: center;
     font-size: 28px;
     font-weight: 700;
-    color: white;
     text-decoration: none;
+    color: #333;
 }
 
 .logo i {
@@ -158,7 +204,7 @@ body {
 
 .horizontal-bar li a, .horizontal-bar li button {
     font-weight: 500;
-    color: white;
+    color: #333;
     transition: color 0.3s ease;
     text-decoration: none;
     font-size: 16px;
@@ -178,7 +224,7 @@ body {
     display: none;
     background: none;
     border: none;
-    color: white;
+    color: #000;
     font-size: 24px;
     cursor: pointer;
 }
@@ -191,6 +237,7 @@ body {
     display: flex;
     align-items: center;
     overflow: hidden;
+    color: #fff;
 }
 
 .section-1::before {
@@ -286,9 +333,7 @@ section {
 }
 
 /* About Section */
-.section-2 {
-    background: url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat fixed;
-}
+
 
 .section-2::before {
     content: '';
@@ -297,7 +342,8 @@ section {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(12, 35, 64, 0.9);
+    background: #f4f4f4;
+    color: #333;
     z-index: 0;
 }
 
@@ -316,13 +362,14 @@ section {
 .description-part h1 {
     font-size: 2.625rem;
     margin-bottom: 25px;
+    color: #333;
 }
 
 .description-part p {
     font-size: 1.125rem;
     line-height: 1.8;
     margin-bottom: 30px;
-    color: rgba(255, 255, 255, 0.9);
+    color: #333;
 }
 
 .img-part {
@@ -342,10 +389,6 @@ section {
     transform: perspective(1000px) rotateY(0deg);
 }
 
-/* Jobs Section */
-.section-3 {
-    background: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80') center/cover no-repeat fixed;
-}
 
 .section-3::before {
     content: '';
@@ -354,7 +397,8 @@ section {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(12, 35, 64, 0.9);
+    background: #f4f4f4;
+    color: #333;
     z-index: 0;
 }
 
@@ -386,6 +430,7 @@ section {
     margin-bottom: 25px;
     padding-bottom: 15px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    color: #000;
 }
 
 .company {
@@ -397,6 +442,7 @@ section {
     border-radius: 8px;
     transition: all 0.3s ease;
     background: rgba(255, 255, 255, 0.05);
+    color: #000;
 }
 
 .company:hover {
@@ -415,10 +461,11 @@ section {
 .Industry {
     padding: 15px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    color: rgba(255, 255, 255, 0.9);
+    color: #333;
     cursor: pointer;
     transition: all 0.3s ease;
     border-radius: 5px;
+    color: #000;
 }
 
 .Industry:hover {
@@ -442,6 +489,7 @@ section {
     margin-bottom: 25px;
     padding-bottom: 15px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    color: #000;
 }
 
 .jobs {
@@ -451,11 +499,13 @@ section {
     transition: all 0.3s ease;
     border-radius: 8px;
     padding: 20px;
+    color: #000;
 }
 
 .jobs:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: #fff;
     transform: translateY(-5px);
+    box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.1);
 }
 
 .company-name {
@@ -463,6 +513,7 @@ section {
     align-items: center;
     gap: 20px;
     margin-bottom: 20px;
+    color: #000;
 }
 
 .company-name img {
@@ -476,11 +527,11 @@ section {
 .jobs-description h2 {
     font-size: 1.25rem;
     margin-bottom: 15px;
-    color: white;
+    color: #333;
 }
 
 .jobs-description p {
-    color: rgba(255, 255, 255, 0.8);
+    color: #333;
     margin-bottom: 15px;
     line-height: 1.7;
 }
@@ -488,7 +539,7 @@ section {
 .jobs-description div {
     display: flex;
     gap: 30px;
-    color: rgba(255, 255, 255, 0.7);
+    color: #333;
     font-size: 0.875rem;
     margin-bottom: 20px;
 }
@@ -526,7 +577,7 @@ section {
     width: 45px;
     height: 45px;
     border-radius: 50%;
-    color: rgba(255, 255, 255, 0.8);
+    color: #000;
     font-weight: 600;
     transition: all 0.3s ease;
     background: rgba(255, 255, 255, 0.1);
@@ -535,7 +586,7 @@ section {
 
 .counters li a:hover, .counters li a.active {
     background: linear-gradient(45deg, #2563eb, #4f46e5);
-    color: white;
+    color: #fff;
     transform: translateY(-3px);
 }
 
@@ -558,6 +609,7 @@ section {
 .section-4 .container {
     position: relative;
     z-index: 1;
+    color: #fff;
 }
 
 .steps-container {
@@ -842,7 +894,7 @@ footer ul li a:hover {
     width: 80%;
     max-width: 400px;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.95);
+    background: #fff;
     backdrop-filter: blur(10px);
     z-index: 2000;
     transition: all 0.3s ease;
@@ -864,9 +916,9 @@ footer ul li a:hover {
 }
 
 .mobile-menu-close {
-    background: none;
+    background: non;
     border: none;
-    color: white;
+    color: #000;
     font-size: 24px;
     cursor: pointer;
 }
@@ -879,7 +931,7 @@ footer ul li a:hover {
 }
 
 .mobile-nav ul li a, .mobile-nav ul li button {
-    color: white;
+    color: #000;
     text-decoration: none;
     font-size: 18px;
     display: block;
@@ -971,7 +1023,7 @@ footer ul li a:hover {
     box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4);
 }
 
-/* Animation classes */
+
 .animate-on-scroll {
     opacity: 0;
     transform: translateY(20px);

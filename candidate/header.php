@@ -1,13 +1,18 @@
 <?php
 include '../config/db.php';
 include 'fetch_jobs.php';
+include '../functions/activity_log.php';
 session_start();
 if (!isset($_SESSION['candidate_id'])) {
     header("Location: ../auth/login.php");
     exit();
 }
 $candidate_id = $_SESSION['candidate_id'];
-
+$sql="SELECT u.name,c.profile_picture,c.field FROM users u INNER JOIN candidates c ON u.id=c.candidate_id WHERE u.id='$candidate_id'";
+$result=mysqli_query($conn,$sql);
+if(mysqli_num_rows($result)>0){
+    $row=mysqli_fetch_assoc($result);
+}
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +26,8 @@ $candidate_id = $_SESSION['candidate_id'];
 </head>
 
 <body>
-
+    <button class="menu-toggle">☰</button>
+    <div class="overlay"></div>
     <div class="language-selector">
         <button class="language-btn active" data-lang="en">English</button>
         <button class="language-btn" data-lang="om">Afaan Oromoo</button>
@@ -30,8 +36,8 @@ $candidate_id = $_SESSION['candidate_id'];
 
     <div class="sidebar">
         <div class="user-info">
-            <img src="../uploads/images/igor-omilaev-eGGFZ5X2LnA-unsplash.jpg" alt="User Profile" id="profile-pic">
-            <h2 id="user-name">Chala Tolesa</h2>
+            <img src="../uploads/images/<?php echo $row['profile_picture'] ?>" alt="User Profile" id="profile-pic">
+            <h2 id="user-name"><?php echo $row['name'] ?></h2>
         </div>
         <?php $currentPage = basename($_SERVER['PHP_SELF'], ".php"); ?>
         <a href="dashboard.php" class="<?= $currentPage == 'dashboard' ? 'active' : '' ?>" data-translate="dashboard">Dashboard</a>

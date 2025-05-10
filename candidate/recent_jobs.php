@@ -1,6 +1,6 @@
 <?php
 include 'header.php';
-$job_list = fetch_jobs($conn);
+$job_list = fetch_jobs($conn,$row['field']);
 ?>
 <div id="recent-jobs-content">
     <h2 class="section-title" data-translate="recent_jobs">Recent Jobs</h2>
@@ -16,7 +16,7 @@ $job_list = fetch_jobs($conn);
                         <span data-translate="location">Location:</span> <?php echo htmlspecialchars($job['location']); ?><br>
                         <span data-translate="posted_date">Posted date:</span> <?php echo htmlspecialchars($job['created_at']); ?>
                     </div>
-                    <p><?php echo htmlspecialchars($job['description']); ?></p>
+                    <p><?php echo substr(htmlspecialchars($job['description']),0,300)." ..."; ?></p>
                     <div class="job-actions">
                         <a href="#" class="btn" data-translate="view_details">View Details</a>
                         <a href="#" class="btn btn-secondary" data-translate="apply">Apply</a>

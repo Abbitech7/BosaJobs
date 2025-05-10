@@ -16,7 +16,7 @@ include 'fetch_company.php';
                         <span data-translate="location">Location:</span> <?php echo htmlspecialchars($company['location']); ?><br>
                         <span data-translate="industry">Industry:</span> <?php echo htmlspecialchars($company['industry']); ?>
                     </div>
-                    <a href="#" class="btn" data-translate="see_more">See More</a>
+                    <a href="company_detail.php?company_id=<?php echo $company['user_id']?>" class="btn" data-translate="see_more">See More</a>
                 </div>
             <?php endforeach; ?>
         <?php endif; ?>

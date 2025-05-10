@@ -1,5 +1,7 @@
 <?php
 include "../config/db.php";
+include "../functions/activity_log.php";
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -78,6 +80,9 @@ include "../config/db.php";
                     $query = "INSERT INTO users (name, email, password, role) VALUES ('$name', '$email', '$password', 'candidate')";
                     $result = mysqli_query($conn, $query);
                     if ($result) {
+                        $user_id = mysqli_insert_id($conn);
+                        $activity = "New candidate registered";
+                        log_activity($user_id, $activity, $conn);
                         echo "<script>
                         alert('Registration successful!');
                         window.location.href = 'login.php';
@@ -120,6 +125,9 @@ include "../config/db.php";
                     $query = "INSERT INTO users (name, email, password, role) VALUES ('$companyName', '$email', '$password', 'company')";
                     $result = mysqli_query($conn, $query);
                     if ($result) {
+                        $user_id = mysqli_insert_id($conn);
+                        $activity = "New company registered";
+                        log_activity($user_id, $activity, $conn);
                         echo "<script>
                         alert('Registration successful!');
                         window.location.href = 'login.php';

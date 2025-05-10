@@ -1,5 +1,6 @@
 <?php
 include '../config/db.php';
+include '../functions/activity_log.php';
 session_start();
 if (!isset($_SESSION['candidate_id'])) {
     header("Location: ../auth/login.php");
@@ -38,6 +39,8 @@ if (isset($_POST['update-profile'])) {
 
     $sql = "UPDATE candidates SET phone = '$phone', country = '$country',address = '$address',field = '$field',experience = '$experience',education = '$education',gender = '$gender',summary = '$summary',resume='$resume',profile_picture='$profile_picture' WHERE candidate_id = '$candidate_id'";
     if (mysqli_query($conn, $sql)) {
+        $activity = "Updated profile information.";
+        log_activity($candidate_id, $activity, $conn);
         echo "<script>
         alert('Profile updated successfully!');
         window.location.href = 'dashboard.php';

@@ -1,28 +1,18 @@
-// DOM Content Loaded Event
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize all functionality
     initHeaderScroll();
     initMobileMenu();
     initLanguageSelector();
     initSmoothScrolling();
-    initPopup();
     initAnimations();
 });
 
-// Header Scroll Effect
 function initHeaderScroll() {
     const header = document.getElementById('header');
-    
     window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
+        header.classList.toggle('scrolled', window.scrollY > 50);
     });
 }
 
-// Mobile Menu Functionality
 function initMobileMenu() {
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const mobileMenu = document.createElement('div');
@@ -40,118 +30,268 @@ function initMobileMenu() {
         </div>
         <nav class="mobile-nav">
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#jobs">Jobs</a></li>
-                <li><a href="#how-it-works">How It Works</a></li>
-                <li><button class="mobile-login-btn"><i class="fas fa-user-plus"></i> Login</button></li>
-                <li><button class="mobile-signup-btn"><i class="fas fa-user-plus"></i> Sign Up</button></li>
+                <li><a href="#" data-translate="home">Home</a></li>
+                <li><a href="#about" data-translate="about">About</a></li>
+                <li><a href="#jobs" data-translate="jobs">Jobs</a></li>
+                <li><a href="#how-it-works" data-translate="how-it-works">How It Works</a></li>
+                <li><a href="auth/login.php" class="mobile-login-btn"><i class="fas fa-user-plus"></i> <span data-translate="login">Login</span></a></li>
+                <li><a hreff ="auth/register.php" class="mobile-signup-btn"><i class="fas fa-user-plus"></i> <span data-translate="signup">Sign Up</span></a></li>
+                <li class="mobile-language-dropdown">
+                    <a href="#" class="dropdown-toggle">
+                        <div>
+                            <i class="fas fa-globe"></i>
+                            <span class="current-language">English</span>
+                        </div>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" data-lang="en"><i class="fas fa-check language-check"></i> English</a></li>
+                        <li><a href="#" data-lang="or"><i class="fas fa-globe language-check"></i> Afaan Oromoo</a></li>
+                        <li><a href="#" data-lang="am"><i class="fas fa-globe language-check"></i> �ማርኛ</a></li>
+                    </ul>
+                </li>
             </ul>
         </nav>
     `;
 
+    function closeMenu() {
+        mobileMenu.classList.remove('active');
+        setTimeout(() => {
+            if (document.body.contains(mobileMenu)) {
+                document.body.removeChild(mobileMenu);
+            }
+            document.body.style.overflow = '';
+        }, 300);
+    }
+
     mobileMenuBtn.addEventListener('click', function() {
+        if (document.body.contains(mobileMenu)) {
+            return;
+        }
+        
         document.body.appendChild(mobileMenu);
         document.body.style.overflow = 'hidden';
-        setTimeout(() => {
-            mobileMenu.classList.add('active');
-        }, 10);
+        setTimeout(() => mobileMenu.classList.add('active'), 10);
         
-        // Add event listeners to mobile menu buttons
-        document.querySelector('.mobile-login-btn').addEventListener('click', showPopUp);
-        document.querySelector('.mobile-signup-btn').addEventListener('click', showPopUp);
+        const loginBtn = mobileMenu.querySelector('.mobile-login-btn');
+        const signupBtn = mobileMenu.querySelector('.mobile-signup-btn');
+        
+        if (loginBtn) loginBtn.addEventListener('click', showPopUp);
+        if (signupBtn) signupBtn.addEventListener('click', showPopUp);
+        
+        const mobileToggle = mobileMenu.querySelector('.mobile-language-dropdown .dropdown-toggle');
+        const mobileMenuList = mobileMenu.querySelector('.mobile-language-dropdown .dropdown-menu');
+        
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                mobileMenuList.classList.toggle('show');
+                this.querySelector('.dropdown-arrow').classList.toggle('active');
+            });
+        }
     });
-
-    // Close mobile menu when clicking close button or a link
+    mobileMenu.addEventListener('click', function(e) {
+        if (e.target.closest('.mobile-menu-close')) {
+            closeMenu();
+        }
+    });
+    mobileMenu.addEventListener('click', function(e) {
+        if (e.target.tagName === 'A' && !e.target.classList.contains('dropdown-toggle')) {
+            closeMenu();
+        }
+    });
     document.addEventListener('click', function(e) {
-        if (e.target.classList.contains('mobile-menu-close') || 
-            (mobileMenu.contains(e.target) && e.target.tagName === 'A')) {
-            mobileMenu.classList.remove('active');
-            setTimeout(() => {
-                if (document.body.contains(mobileMenu)) {
-                    document.body.removeChild(mobileMenu);
-                }
-                document.body.style.overflow = '';
-            }, 300);
+        if (!mobileMenuBtn.contains(e.target) && !mobileMenu.contains(e.target) && document.body.contains(mobileMenu)) {
+            closeMenu();
         }
     });
 }
 
-// Language Selector Functionality
 function initLanguageSelector() {
-    const languageDropdown = document.querySelector('.language-dropdown');
-    const languageBtn = document.querySelector('.language-btn');
+    const languageDropdown = document.querySelector('.language-dropdown-nav');
+    const languageMenu = languageDropdown.querySelector('.dropdown-menu');
+    const currentLanguage = languageDropdown.querySelector('.current-language');
     
-    // Toggle dropdown on button click
-    languageBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        languageDropdown.style.display = languageDropdown.style.display === 'block' ? 'none' : 'block';
+    const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+    changeLanguage(savedLanguage);
+    
+    languageDropdown.addEventListener('mouseenter', () => {
+        languageMenu.style.opacity = '1';
+        languageMenu.style.visibility = 'visible';
     });
-
-    // Close dropdown when clicking outside
+    
+    languageDropdown.addEventListener('mouseleave', () => {
+        languageMenu.style.opacity = '0';
+        languageMenu.style.visibility = 'hidden';
+    });
+    
     document.addEventListener('click', function(e) {
-        if (!e.target.closest('.language-selector')) {
-            languageDropdown.style.display = 'none';
-        }
-    });
-
-    // Language selection functionality
-    const languageLinks = document.querySelectorAll('.language-dropdown a');
-    languageLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
+        if (e.target.closest('.language-dropdown-nav .dropdown-menu a') || 
+           (document.querySelector('.mobile-language-dropdown') && e.target.closest('.mobile-language-dropdown .dropdown-menu a'))){
             e.preventDefault();
-            const lang = this.getAttribute('data-lang');
+            const lang = e.target.closest('a').getAttribute('data-lang');
             changeLanguage(lang);
-            
-            // Update the selected language in the button
-            const languageName = this.textContent.trim();
-            languageBtn.querySelector('span').textContent = languageName.split(' ')[0];
-            
-            // Update checkmark
-            languageLinks.forEach(l => l.querySelector('i').className = 'fas fa-globe');
-            this.querySelector('i').className = 'fas fa-check';
-            
-            languageDropdown.style.display = 'none';
-        });
+        }
     });
 }
 
-// Language Change Function (placeholder - would be implemented with i18n in a real app)
 function changeLanguage(lang) {
-    console.log(`Changing language to ${lang}`);
-    // In a real application, this would load translations
-    // For now, we'll just show an alert
     const languageNames = {
         'en': 'English',
-        'am': 'Amharic',
         'or': 'Afaan Oromoo',
-        'so': 'Af Soomaali',
-        'ti': 'Tigrinya',
-        'ar': 'Arabic'
+        'am': 'አማርኛ'
     };
     
-    alert(`Language changed to ${languageNames[lang] || 'English'}. In a real application, this would load the appropriate translations.`);
+    document.querySelectorAll('.current-language').forEach(el => {
+        el.textContent = languageNames[lang];
+    });
+    
+    localStorage.setItem('selectedLanguage', lang);
+    
+    document.querySelectorAll('[data-lang]').forEach(item => {
+        const icon = item.querySelector('i');
+        icon.className = item.getAttribute('data-lang') === lang ? 
+            'fas fa-check language-check' : 'fas fa-globe language-check';
+    });
+    
+    const translations = {
+        'en': {
+            'home': 'Home',
+            'about': 'About',
+            'jobs': 'Jobs',
+            'how-it-works': 'How It Works',
+            'login': 'Login',
+            'signup': 'Sign Up',
+            'hero-title': 'Find Your Dream Job in Here',
+            'hero-text': 'Connecting talented professionals with top employers. Start your career journey today with us',
+            'find-jobs': 'Find Jobs',
+            'post-job': 'Post a Job',
+            'learn-more': 'Learn More',
+            'latest-jobs': 'Latest Job Openings',
+            'featured-companies': 'Featured Companies',
+            'industry-categories': 'Industry Categories',
+            'for-job-seekers': 'For Job Seekers',
+            'for-employers': 'For Employers',
+            'create-profile': 'Create Your Profile',
+            'upload-resume': 'Upload Your Resume',
+            'get-matched': 'Get Matched',
+            'apply-interview': 'Apply & Interview',
+            'create-company-profile': 'Create Company Profile',
+            'post-job-openings': 'Post Job Openings',
+            'review-candidates': 'Review Candidates',
+            'hire-top-talent': 'Hire Top Talent',
+            'browse-jobs': 'Browse Jobs',
+            'job-alerts': 'Job Alerts',
+            'browse-candidates': 'Browse Candidates',
+            'contact-us': 'Contact Us',
+            'for-candidates' : 'For candidates',
+            "jimma-job-platform" : 'Job platform'
+        },
+        'or': {
+            'home': 'Fuula Jalqabaa',
+            'about': 'Waa\'ee',
+            'jobs': 'Hojiiwwan',
+            'how-it-works': 'Akka itti hojjetu',
+            'login': 'Seensa',
+            'signup': 'Galmaa\'i',
+            'hero-title': 'Hojii hawwii Keessanii as keessatti Argadhaa',
+            'hero-text': 'Ogeessota dandeettii qaban hojjechiistota olaanoo waliin wal qunnamsiisuu. Imala hojii keessanii har\'a nu wajjin eegalaa.',
+            'find-jobs': 'Hojii Barbaadi',
+            'post-job': 'Hojii Maxxansi',
+            'learn-more': 'Dabalataan ilaali',
+            'latest-jobs': 'Hojiiwwan Haaraa as Keessatti',
+            'featured-companies': 'Dhabbatawwan filataman',
+            'industry-categories': 'Gareewwan Hojii',
+            'for-job-seekers': 'Hojii Barbaadootaaf',
+            'for-employers': 'Hojjechiistotaaf',
+            'create-profile': 'profile Keessan Uumuu',
+            'upload-resume': 'CV Keessan Baaftuu',
+            'get-matched': 'Walitti Qabsiisaa',
+            'apply-interview': 'Applii Gaafadhu & Gaaffii',
+            'create-company-profile': 'profile dhaabbataa Uumuu',
+            'post-job-openings': 'Hojiiwwan Baanaa maxxansi',
+            'review-candidates': 'Kadhimaamtooti gulaali',
+            'hire-top-talent': 'Ogeessa Ol\'aanaa Qacaraa',
+            'browse-jobs': 'Hojiiwwan Ilaaluu',
+            'career-resources': 'Qabeenyaa Hojii',
+            'job-alerts': 'yaadachisa Hojii',
+            'browse-candidates': 'Kaadhimamtoota ilaali',
+            "for-candidates": 'Kaadhimamtootaf',
+            'contact-us': 'Nu qunnamaa',
+            "jimma-job-platform" : 'Pilaatformii Hojii'
+        },
+        'am': {
+            'home': 'መግቢያ',
+            'about': 'ስለ እኛ',
+            'jobs': 'ስራዎች',
+            'how-it-works': 'እንዴት እንደሚሰራ',
+            'login': 'ይግቡ',
+            'signup': 'ይመዝገቡ',
+            'hero-title': 'የህልምዎን ስራ እዚህ ያግኙ',
+            'hero-text': 'ብቁ ባለሙያዎችን ከዋና አሰሪዎች ጋር ማገናኘት። የሥራ ጉዞዎን ዛሬ ከእኛ ጋር ይጀምሩ ፣',
+            'find-jobs': 'ስራዎችን ይፈልጉ',
+            'post-job': 'ስራ ይለጥፉ',
+            'learn-more': 'ተጨማሪ ይመልከቱ',
+            'latest-jobs': 'የቅርብ ጊዜ የስራ እድሎች',
+            'featured-companies': 'ተለይተው የቀረቡ-ኩባንያዎች',
+            'industry-categories': 'የኢንዱስትሪ ምድቦች',
+            'for-job-seekers': 'ለስራ ፈላጊዎች',
+            'for-employers': 'ለቀጣሪዎች',
+            'create-profile': 'መገለጫዎን ይፍጠሩ',
+            'upload-resume': 'ሪዙሜዎን ይስቀሉ',
+            'get-matched': 'ይጣጣሙ',
+            'apply-interview': 'ያመልክቱ እና ቃለ መጠይቅ',
+            'create-company-profile': 'የኩባንያ መገለጫ ይፍጠሩ',
+            'post-job-openings': 'የስራ እድሎችን ይለጥፉ',
+            'review-candidates': 'አመልካቾችን ይገምግሙ',
+            'hire-top-talent': 'ብቁ ሠራተኞችን ይቅጠሩ',
+            'browse-jobs': 'ስራዎችን ይፈልጉ',
+            "for-candidates": 'ለእጩዎች',
+            'job-alerts': 'የስራ ማስታወቂያዎች',
+            'browse-candidates': 'አመልካቾችን ይፈልጉ',
+            'contact-us': 'ያግኙን',
+            "jimma-job-platform": 'የስራ መድረክ'
+        }
+    
+    };
+
+    document.querySelectorAll('[data-translate]').forEach(element => {
+        const key = element.getAttribute('data-translate');
+        if (translations[lang] && translations[lang][key]) {
+            element.textContent = translations[lang][key];
+        }
+    });
+
+    
+
+    const notification = document.createElement('div');
+    notification.className = 'language-notification';
+    notification.innerHTML = `<p>Language changed to ${languageNames[lang] || 'English'}</p>`;
+    document.body.appendChild(notification);
+    
+    setTimeout(() => notification.classList.add('show'), 10);
+    setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => {
+            if (document.body.contains(notification)) document.body.removeChild(notification);
+        }, 300);
+    }, 3000);
 }
 
-// Smooth Scrolling for Anchor Links
 function initSmoothScrolling() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
-            
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
             
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
-                // Close mobile menu if open
                 const mobileMenu = document.querySelector('.mobile-menu');
                 if (mobileMenu && mobileMenu.classList.contains('active')) {
                     mobileMenu.classList.remove('active');
                     setTimeout(() => {
-                        if (document.body.contains(mobileMenu)) {
-                            document.body.removeChild(mobileMenu);
-                        }
+                        if (document.body.contains(mobileMenu)) document.body.removeChild(mobileMenu);
                         document.body.style.overflow = '';
                     }, 300);
                 }
@@ -165,94 +305,26 @@ function initSmoothScrolling() {
     });
 }
 
-// Popup Functionality
-function initPopup() {
-    // This is initialized here but the actual showPopUp function is global
-    // because it's called from HTML onclick attributes
-}
+document.querySelector('.register').addEventListener('click',function(){
+    window.location.href = 'auth/register.php';
+});
 
-// Global Popup Function (called from HTML)
-function showPopUp() {
-    const popup = document.createElement('div');
-    popup.className = 'popup-container';
-    popup.innerHTML = `
-        <div class="pop-up">
-            <img src="https://cdn.jsdelivr.net/npm/@material-icons/svg@1.0.0/svg/close/baseline.svg" alt="Close" width="24" height="24">
-            <div class="pop-up-description">
-                <p>Join our community of professionals and companies in Jimma. Select your role to get started:</p>
-            </div>
-            <div class="pop-up-links">
-                <a href="authentication/candidate_sign_up.php">I'm a Candidate</a>
-                <a href="authentication/company_sign_up.php">I'm an Employer</a>
-            </div>
-        </div>
-    `;
-    
-    document.body.appendChild(popup);
-    document.body.style.overflow = 'hidden';
-    
-    // Show the popup
-    setTimeout(() => {
-        popup.classList.add('active');
-    }, 10);
-    
-    // Close popup when clicking close button
-    popup.querySelector('img').addEventListener('click', function() {
-        closePopup(popup);
-    });
-    
-    // Close popup when clicking outside
-    popup.addEventListener('click', function(e) {
-        if (e.target === this) {
-            closePopup(popup);
-        }
-    });
-    
-    // Close popup with Escape key
-    document.addEventListener('keydown', function escClose(e) {
-        if (e.key === 'Escape') {
-            closePopup(popup);
-            document.removeEventListener('keydown', escClose);
-        }
-    });
-}
+document.querySelector('.login').addEventListener('click',function(){
+    window.location.href = 'auth/login.php';
+})
 
-function closePopup(popup) {
-    popup.classList.remove('active');
-    setTimeout(() => {
-        if (document.body.contains(popup)) {
-            document.body.removeChild(popup);
-        }
-        document.body.style.overflow = '';
-    }, 300);
-}
-
-// Animation on Scroll
 function initAnimations() {
-    // Set initial state for animated elements
     const animatedElements = document.querySelectorAll('.steps-box, .jobs, .company, .Industry');
-    animatedElements.forEach(element => {
-        element.classList.add('animate-on-scroll');
-    });
+    animatedElements.forEach(element => element.classList.add('animate-on-scroll'));
 
-    // Create intersection observer
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animated');
-            }
+            if (entry.isIntersecting) entry.target.classList.add('animated');
         });
-    }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-    // Observe all animated elements
-    animatedElements.forEach(element => {
-        observer.observe(element);
-    });
+    animatedElements.forEach(element => observer.observe(element));
 
-    // Animate hero content on load
     const heroContent = document.querySelector('.section-1-content');
     if (heroContent) {
         setTimeout(() => {
@@ -261,40 +333,30 @@ function initAnimations() {
         }, 300);
     }
 }
-
-// Industry Filter Functionality (example - would be implemented with real filtering)
+document.querySelector()
 document.querySelectorAll('.Industry').forEach(industry => {
     industry.addEventListener('click', function() {
-        const industryName = this.textContent.trim();
-        console.log(`Filtering by industry: ${industryName}`);
-        // In a real application, this would filter the jobs list
-        alert(`Filtering by ${industryName}. In a real application, this would filter the jobs list.`);
+        console.log(`Filtering by industry: ${this.textContent.trim()}`);
     });
 });
 
-// Job Application Counter (example functionality)
 document.querySelectorAll('.details-btn').forEach(button => {
     button.addEventListener('click', function(e) {
-        if (this.getAttribute('href') === '#') {
-            e.preventDefault();
-            console.log('Job application button clicked');
-            // In a real application, this would track applications
-        }
+        if (this.getAttribute('href') === '#') e.preventDefault();
     });
 });
 
-// Pagination Functionality (example)
 document.querySelectorAll('.counters li a').forEach(link => {
     link.addEventListener('click', function(e) {
         if (this.getAttribute('href') === '#') {
             e.preventDefault();
-            const currentActive = document.querySelector('.counters li a.active');
-            if (currentActive) {
-                currentActive.classList.remove('active');
-            }
+            document.querySelector('.counters li a.active')?.classList.remove('active');
             this.classList.add('active');
-            console.log(`Changed to page ${this.textContent}`);
-            // In a real application, this would load the appropriate page of results
         }
     });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+    changeLanguage(savedLanguage);
 });

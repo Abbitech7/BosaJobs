@@ -1,4 +1,6 @@
-<?php include 'header.php' ?>
+<?php include 'header.php' ;
+ include 'application.php';
+ ?>
 <div id="dashboard-content">
     <div class="welcome-message">
         <h2 data-translate="welcome">Welcome to Your Dashboard</h2>
@@ -10,7 +12,7 @@
     <h2 class="section-title" data-translate="recent_jobs">Recent Posted Jobs</h2>
     <div class="card">
         <?php
-        $jobs = fetch_jobs($conn);
+        $jobs = fetch_jobs($conn,$row['field']);
         foreach ($jobs as $job) {
             echo '<div class="job-card">
                         <h3>' . htmlspecialchars($job['title']) . '</h3>
@@ -19,13 +21,13 @@
                             <span data-translate="location">Location:</span> ' . htmlspecialchars($job['location']) . '<br>
                             <span data-translate="deadline">Deadline:</span> ' . htmlspecialchars($job['deadline']) . '
                         </div>
-                        <p>' . htmlspecialchars($job['description']) . '</p>
+                        <p>' . substr(htmlspecialchars($job['description']),0,300). ' ...</p>
                         <div class="job-actions">
                             <a href="#" class="btn" data-translate="view_details">View Details</a>
                             <a href="#?'.$job['id'].'" class="btn btn-secondary" data-translate="apply" id="apply">Apply</a>
                         </div>
                     </div>';
-            include 'application.php';
+           application($conn,$job['id'],$candidate_id);
         }
         ?>
 

@@ -116,7 +116,7 @@ if (mysqli_num_rows($result) > 0) {
             <input type="file" name="resume" accept=".pdf,.doc,.docx">
         </div>
 
-        <button class="btn" data-translate="save_profile" type="submit">Save Profile</button>
+        <button class="btn" name="update-profile" data-translate="save_profile" type="submit">Save Profile</button>
     </form>
 </div>
 
