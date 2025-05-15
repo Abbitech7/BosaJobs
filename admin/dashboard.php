@@ -93,7 +93,8 @@
          <h1>Recent Activities</h1>
      </div>
 
-     <table>
+     <div class="table-wrapper">
+        <table>
          <tr>
              <th>ID</th>
              <th>Activity</th>
@@ -117,6 +118,7 @@
             }
             ?>
      </table>
+     </div>
  </div>
  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
  <script>

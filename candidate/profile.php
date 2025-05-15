@@ -107,13 +107,12 @@ if (mysqli_num_rows($result) > 0) {
             <label data-translate="description">Professional Summary:</label>
             <textarea name="summary"><?php echo $summary; ?></textarea>
         </div>
-
         <div class="form-group">
             <label data-translate="resume">Current Resume:</label>
             <?php if (!empty($resume)): ?>
                 <a href="../uploads/resumes/<?php echo $resume; ?>" target="_blank">View Current Resume</a>
             <?php endif; ?>
-            <input type="file" name="resume" accept=".pdf,.doc,.docx">
+            <input type="file" name="resume">
         </div>
 
         <button class="btn" name="update-profile" data-translate="save_profile" type="submit">Save Profile</button>

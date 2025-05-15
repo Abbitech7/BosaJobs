@@ -1,7 +1,7 @@
 <?php
 function fetch_candidates($conn) : array {
     $candidate = [];
-    $sql = "SELECT u.name, u.email, u.id AS candidate_id, c.phone, c.address, c.field, c.gender, c.profile_picture, c.education, c.country 
+    $sql = "SELECT u.name, u.email, u.id AS candidate_id, c.*
     FROM users u 
     INNER JOIN candidates c ON u.id = c.candidate_id 
     WHERE u.role = 'candidate' 

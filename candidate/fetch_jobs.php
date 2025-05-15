@@ -17,7 +17,7 @@ function fetch_jobs($conn,$field) {
             FROM jobs j
             INNER JOIN users u ON j.company_id = u.id
             INNER JOIN company c ON u.id = c.company_id
-            WHERE j.title LIKE '$field'
+            WHERE j.title LIKE '$field' AND j.status='approved'
             ORDER BY j.created_at DESC";
 
     $result = mysqli_query($conn, $sql);

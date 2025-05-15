@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-translate="about_page_title">About Us | BosaJobs</title>
+    <title data-translate="about_page_title">About Us | JobPortal</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../public/css/about.css">
@@ -45,7 +45,7 @@
         <div class="container header-container">
             <a href="#" class="logo">
                 <i class="fas fa-briefcase"></i>
-                Bossa Jobs
+                JobPortal
             </a>
 
             <ul class="horizontal-bar">
@@ -79,7 +79,7 @@
 
     <section class="about-hero">
         <div class="container">
-            <h1 data-translate="about_heading">About BosaJobs</h1>
+            <h1 data-translate="about_heading">About JobPortal</h1>
             <p data-translate="about_description">Connecting talented professionals with their dream jobs. Our mission is to make job searching and hiring seamless, efficient, and effective.</p>
         </div>
     </section>
@@ -108,7 +108,7 @@
         <div class="container">
             <div class="section-title">
                 <h2 data-translate="mission_values_heading">Our Mission & Values</h2>
-                <p data-translate="mission_values_subheading">These core principles guide everything we do at BosaJobs</p>
+                <p data-translate="mission_values_subheading">These core principles guide everything we do at JobPortal</p>
             </div>
             <div class="values-grid">
                 <div class="value-card">
@@ -172,7 +172,7 @@
     <div class="container">
         <div class="cta">
             <h2 data-translate="cta_heading">Ready to Transform Your Career or Hiring?</h2>
-            <p data-translate="cta_subheading">Join thousands of professionals and companies who've found success with BosaJobs</p>
+            <p data-translate="cta_subheading">Join thousands of professionals and companies who've found success with JobPortal</p>
             <div style="display: flex; gap: 15px; justify-content: center;">
                 <a href="../auth/login.php" class="btn btn-primary" style="background: white; color: var(--primary);" data-translate="post_job">Post a Job</a>
                 <a href="../index.php" class="btn btn-outline" style="border-color: white; color: white;" data-translate="browse_jobs">Browse Jobs</a>
@@ -183,7 +183,7 @@
     <footer>
         <div class="container">
             <div>
-                <h1 data-translate="brand_name">Bossa Jobs</h1>
+                <h1 data-translate="brand_name">JobPortal Jobs</h1>
                 <p style="color: #666; margin: 20px 0; line-height: 1.7;" data-translate="footer_description">Connecting talent with opportunity in Jimma City. Our mission is to make career growth accessible to everyone in the region.</p>
                 <div class="icon-linked">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -215,13 +215,13 @@
                 <ul>
                     <li><a href="#"><i class="fas fa-map-marker-alt"></i> <span data-translate="location">Jimma, Ethiopia</span></a></li>
                     <li><a href="tel:+251912345678"><i class="fas fa-phone-alt"></i> <span data-translate="phone">+251 912 345 678</span></a></li>
-                    <li><a href="mailto:info@bossajobs.com"><i class="fas fa-envelope"></i> <span data-translate="email">info@bossajobs.com</span></a></li>
+                    <li><a href="mailto:info@JobPortaljobs.com"><i class="fas fa-envelope"></i> <span data-translate="email">info@JobPortaljobs.com</span></a></li>
                 </ul>
             </div>
         </div>
 
         <div class="copyright">
-            <p>&copy; 2024 <span data-translate="brand_name">Bossa Jobs</span>. <span data-translate="all_rights">All Rights Reserved</span>.</p>
+            <p>&copy; 2024 <span data-translate="brand_name">JobPortal Jobs</span>. <span data-translate="all_rights">All Rights Reserved</span>.</p>
         </div>
     </footer>
 
@@ -229,21 +229,21 @@
     <script>
         const translations = {
             en: {
-                about_page_title: "About Us | BosaJobs",
-                brand_name: "Bossa Jobs",
+                about_page_title: "About Us | JobPortal",
+                brand_name: "JobPortal Jobs",
                 home: "Home",
                 about: "About",
                 jobs: "Jobs",
                 "how-it-works": "How It Works",
                 login: "Login",
                 signup: "Sign Up",
-                about_heading: "About BosaJobs",
+                about_heading: "About JobPortal",
                 about_description: "Connecting talented professionals with their dream jobs since 2015. Our mission is to make job searching and hiring seamless, efficient, and effective.",
                 our_story: "Our Story",
                 story_paragraph1: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl. Sed euismod, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl. Sed euismod, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl. Sed euismod, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl.",
                 story_paragraph2: "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi.",
                 mission_values_heading: "Our Mission & Values",
-                mission_values_subheading: "These core principles guide everything we do at BosaJobs",
+                mission_values_subheading: "These core principles guide everything we do at JobPortal",
                 mission_title: "Our Mission",
                 mission_text: "To empower individuals in their career journeys and enable companies to find exceptional talent through innovative technology and personalized service.",
                 people_first_title: "People First",
@@ -264,14 +264,14 @@
                 vp_marketing_title: "VP of Marketing",
                 testimonials_heading: "What People Say About Us",
                 testimonials_subheading: "Hear from job seekers and employers who've used our platform",
-                testimonial1_text: "BosaJobs completely transformed our hiring process. We found three perfect candidates for hard-to-fill positions in just two weeks. The quality of applicants was exceptional compared to other platforms we've used.",
+                testimonial1_text: "JobPortal completely transformed our hiring process. We found three perfect candidates for hard-to-fill positions in just two weeks. The quality of applicants was exceptional compared to other platforms we've used.",
                 testimonial1_position: "HR Director, TechSolutions Inc.",
-                testimonial2_text: "After months of searching elsewhere, I landed my dream job through BosaJobs in just three weeks! The personalized job recommendations and easy application process made all the difference.",
+                testimonial2_text: "After months of searching elsewhere, I landed my dream job through JobPortal in just three weeks! The personalized job recommendations and easy application process made all the difference.",
                 testimonial2_position: "Senior Software Engineer",
-                testimonial3_text: "The analytics tools provided by BosaJobs gave us incredible insights into our hiring funnel. We reduced our time-to-hire by 40% while improving candidate quality. Game changer for our growing startup.",
+                testimonial3_text: "The analytics tools provided by JobPortal gave us incredible insights into our hiring funnel. We reduced our time-to-hire by 40% while improving candidate quality. Game changer for our growing startup.",
                 testimonial3_position: "Co-Founder, GreenTech Innovations",
                 cta_heading: "Ready to Transform Your Career or Hiring?",
-                cta_subheading: "Join thousands of professionals and companies who've found success with BosaJobs",
+                cta_subheading: "Join thousands of professionals and companies who've found success with JobPortal",
                 post_job: "Post a Job",
                 browse_jobs: "Browse Jobs",
                 footer_description: "Connecting talent with opportunity in Jimma City. Our mission is to make career growth accessible to everyone in the region.",
@@ -283,19 +283,19 @@
                 browse_candidates: "Browse Candidates",
                 location: "Jimma, Ethiopia",
                 phone: "+251 912 345 678",
-                email: "info@bossajobs.com",
+                email: "info@JobPortaljobs.com",
                 all_rights: "All Rights Reserved"
             },
             am: {
-                about_page_title: "ስለ እኛ | BosaJobs",
-                brand_name: "Bossa Jobs",
+                about_page_title: "ስለ እኛ | JobPortal",
+                brand_name: "JobPortal Jobs",
                 home: "ዋና ገጽ",
                 about: "ስለ እኛ",
                 jobs: "ስራዎች",
                 "how-it-works": "እንዴት እንደሚሰራ",
                 login: "ግባ",
                 signup: "ተመዝገብ",
-                about_heading: "ስለ BosaJobs",
+                about_heading: "ስለ JobPortal",
                 about_description: "በርዕሰ ብቁ ባለሙያዎችን ከህልም ስራቸው ጋር ከ2015 ጀምሮ በማገናኘት ላይ። የእኛ ተልእኮ የስራ ፍለጋ እና ቅጥር ያልተለያየ፣ ውጤታማ እና ውጤታማ ማድረግ ነው።",
                 our_story: "የእኛ ታሪክ",
                 story_paragraph1: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl. Sed euismod, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl. Sed euismod, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl. Sed euismod, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl.",
@@ -341,19 +341,19 @@
                 browse_candidates: "ተፈላጊዎችን ይመልከቱ",
                 location: "ጅማ፣ ኢትዮጵያ",
                 phone: "+251 912 345 678",
-                email: "info@bossajobs.com",
+                email: "info@JobPortaljobs.com",
                 all_rights: "ሁሉም መብቶች የተጠበቁ ናቸው"
             },
             om: {
-                about_page_title: "Waa'ee Keenya | BosaJobs",
-                brand_name: "Bossa Jobs",
+                about_page_title: "Waa'ee Keenya | JobPortal",
+                brand_name: "JobPortal Jobs",
                 home: "Mana",
                 about: "Waa'ee",
                 jobs: "Hojiiwwan",
                 "how-it-works": "Akkamitti Tajaajila",
                 login: "Seeni",
                 signup: "Galmaa'i",
-                about_heading: "Waa'ee BosaJobs",
+                about_heading: "Waa'ee JobPortal",
                 about_description: "Ogeessota qophii qaban qabeenya hojii abjuu isaanii waliin 2015 irraa walitti qabsiisuun. Kaayyoo keenya hojii barbaachuu fi hiriyoota hojii argachuu mijataa, gahaa fi gahaa ta'uu isaati.",
                 our_story: "Seenaa Keenya",
                 story_paragraph1: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl. Sed euismod, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl. Sed euismod, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl. Sed euismod, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl.",
@@ -380,14 +380,14 @@
                 vp_marketing_title: "Pireezidaantii Gabaasaa",
                 testimonials_heading: "Namootni Waa'ee Keenya Maal Jedhu?",
                 testimonials_subheading: "Namoota hojii barbaaduu fi hojii qaban qajeelcha keenya fayyadatan irraa dhaggeeffadhaa",
-                testimonial1_text: "BosaJobs sirna hiree keenya jijjiira. Hojiiwwan hiree argachuu dadhabaa hiree sadii ta'an guyyaa torba lama keessatti argine. Qulqullinni hiree kanneen qajeelcha biroo irra caalaa ture.",
+                testimonial1_text: "JobPortal sirna hiree keenya jijjiira. Hojiiwwan hiree argachuu dadhabaa hiree sadii ta'an guyyaa torba lama keessatti argine. Qulqullinni hiree kanneen qajeelcha biroo irra caalaa ture.",
                 testimonial1_position: "Pireezidaantii HR, Teknooloojii Solushiniz",
-                testimonial2_text: "Ji'a baay'ee bakka biroo irraa barbaadee booda, hojii abjuu koo BosaJobs irraa guyyaa torba sadiin argadhe! Qajeelcha hiree fi sirna hiree mijataan adda baafate.",
+                testimonial2_text: "Ji'a baay'ee bakka biroo irraa barbaadee booda, hojii abjuu koo JobPortal irraa guyyaa torba sadiin argadhe! Qajeelcha hiree fi sirna hiree mijataan adda baafate.",
                 testimonial2_position: "Ogeessa Sooftiweerii Ol'aanaa",
-                testimonial3_text: "Qajeelcha BosaJobs qabeenya hiree keenya keessatti gargaarsa guddaa kenne. Yeroo hiree keenya 40% hir'isinee, qulqullina hiree dabaluun jirra. Jijjiirama guddaa guddina keenyaaf.",
+                testimonial3_text: "Qajeelcha JobPortal qabeenya hiree keenya keessatti gargaarsa guddaa kenne. Yeroo hiree keenya 40% hir'isinee, qulqullina hiree dabaluun jirra. Jijjiirama guddaa guddina keenyaaf.",
                 testimonial3_position: "Duudhaa, GreenTek Innooveeshiniz",
                 cta_heading: "Qabeenya Hojii Keessan Jijjiirachuu Dandeessuu?",
-                cta_subheading: "Miriyoonota namootaa fi kampaanootaa BosaJobs irraa milkaa'aniin walitti makamuu",
+                cta_subheading: "Miriyoonota namootaa fi kampaanootaa JobPortal irraa milkaa'aniin walitti makamuu",
                 post_job: "Hojii Galmeessi",
                 browse_jobs: "Hojiiwwan Ilaali",
                 footer_description: "Jimma Magaalaa keessatti qabeenya hojiiwwanii fi carraa waliin walqabsiisuun. Kaayyoo keenya guddina qabeenya hojiiwwanii naannoo keessatti namoota hundaa gahaa ta'uu isaati.",
@@ -399,7 +399,7 @@
                 browse_candidates: "Hojii Barbaadoota Ilaali",
                 location: "Jimmaa, Itoophiyaa",
                 phone: "+251 912 345 678",
-                email: "info@bossajobs.com",
+                email: "info@JobPortaljobs.com",
                 all_rights: "Mirga Hundaa Kan Eegamu"
             }
         };

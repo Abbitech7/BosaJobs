@@ -23,7 +23,7 @@
                         </div>
                         <p>' . substr(htmlspecialchars($job['description']),0,300). ' ...</p>
                         <div class="job-actions">
-                            <a href="#" class="btn" data-translate="view_details">View Details</a>
+                            <a href="job_detail.php?job_id='.$job['id'].'" class="btn" data-translate="view_details">View Details</a>
                             <a href="#?'.$job['id'].'" class="btn btn-secondary" data-translate="apply" id="apply">Apply</a>
                         </div>
                     </div>';

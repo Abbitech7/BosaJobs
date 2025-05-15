@@ -71,8 +71,6 @@ if (!$result) {
                                 <button class="btn btn-detail" onclick="toggleDetail('.$counter.')">Details</button>
                             </td>
                           </tr>';
-                    
-                    // Details row
                     echo '<tr id="detail-'.$counter.'" class="detail-panel">
                             <td colspan="9">
                                 <div class="detail-grid">
@@ -163,15 +161,13 @@ if (!$result) {
     function toggleDetail(id) {
         const detailPanel = document.getElementById(`detail-${id}`);
         const allPanels = document.querySelectorAll('.detail-panel');
-        
-        // Close all panels first
+    
         allPanels.forEach(panel => {
             if (panel.id !== `detail-${id}`) {
                 panel.style.display = 'none';
             }
         });
         
-        // Toggle the clicked panel
         if (detailPanel.style.display === 'table-row') {
             detailPanel.style.display = 'none';
         } else {

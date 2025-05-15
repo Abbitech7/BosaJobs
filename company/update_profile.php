@@ -44,7 +44,7 @@ if (isset($_POST['update'])) {
         <input type="text" value="<?php echo $location; ?>" name="location">
         <label data-translate="company_website">Company Website:</label>
         <input type="text" value="<?php echo $website; ?>" name="website">
-        <label data-translate="company_website">Industry:</label>
+        <label data-translate="industry">Industry:</label>
         <input type="text" value="<?php echo $industry; ?>" name="industry">
         <label data-translate="upload_logo">Upload Logo:</label>
         <input type="file" name="logo">

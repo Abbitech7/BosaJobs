@@ -98,19 +98,19 @@ $similar_jobs = mysqli_fetch_all($similar_result, MYSQLI_ASSOC);
             <div class="job-section">
                 <h3 class="job-section-title">Job Description</h3>
                 <div class="job-description">
-                    <?php echo nl2br(htmlspecialchars($job['description'])); ?>
+                    <?php echo html_entity_decode($job['description']); ?>
                 </div>
             </div>
 
             <div class="job-section">
                 <h3 class="job-section-title">Requirements</h3>
                 <div class="job-description">
-                    <?php echo nl2br(htmlspecialchars($job['skill'])); ?>
+                    <?php echo html_entity_decode($job['skill']); ?>
                 </div>
             </div>
 
             <div class="apply-actions">
-                <a href="apply.php?job_id=<?php echo $job_id; ?>" class="btn btn-primary">Apply Now</a>
+                <a href="../auth/login.php" class="btn btn-primary">Apply Now</a>
                 <a href="#" class="btn btn-outline">Save Job</a>
             </div>
         </div>

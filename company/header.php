@@ -20,6 +20,7 @@ if (mysqli_num_rows($result) > 0) {
     $contact = $row['contact'];
     $logo = $row['logo'];
     $email = $row['email'];
+    $industry = $row['industry'];
 } else {
     echo "No data found for the company.";
 }
@@ -35,12 +36,14 @@ if (mysqli_num_rows($result) > 0) {
     <title>Dashboard</title>
     <link rel="stylesheet" href="../public/css/company.css">
     <link rel="stylesheet" href="../public/css/applicants.css">
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
 </head>
 
 <body>
     <button class="menu-toggle">☰</button>
     <div class="overlay"></div>
-    
+
     <div class="language-selector">
         <button class="language-btn active" data-lang="en">English</button>
         <button class="language-btn" data-lang="om">Afaan Oromoo</button>

@@ -16,16 +16,16 @@ include 'search_company.php';
 
     </div>
 
-    <table>
+    <div class="table-wrapper">
+        <table>
         <tr>
-            <th>ID.</th>
             <th>Company Logo</th>
             <th>Company Name</th>
             <th>Email</th>
             <th>Location</th>
             <th>Website</th>
             <th>Contact Tel</th>
-            <th>Operation</th>
+            <th colspan="2">Operation</th>
         </tr>
         <?php
         $empty = 'No companies registered yet.';
@@ -42,14 +42,14 @@ include 'search_company.php';
             foreach ($companies as $company) {
                 echo '
                    <tr>
-                        <td>' . $company['id'] . '</td>
                         <td><img src="../uploads/images/' . $company['logo'] . '" alt="Company Logo"></td>
                         <td>' . $company['name'] . '</td>
                         <td>' . $company['email'] . '</td>
                         <td>' . $company['location'] . '</td>
                         <td>' . $company['website'] . '</td>
                         <td>' . $company['contact'] . '</td>
-                        <td><td><a href="?company_id=' . $company['id'] . '&confirm=true" data-translate="delete-job" class="view-applicants" onclick="return confirm(\'Are you sure you want to delete this company?\')">Remove</a></td></td>
+                        <td><a href="company_detail.php?company_id=' . $company['id'] . '" data-translate="delete-job" class="view-applicants">See</a></td>
+                        <td><a href="?company_id=' . $company['id'] . '&confirm=true" data-translate="delete-job" class="view-applicants" onclick="return confirm(\'Are you sure you want to delete this company?\')">Remove</a></td>
                     </tr>
                    ';
             }
@@ -59,6 +59,7 @@ include 'search_company.php';
 
         ?>
     </table>
+    </div>
     <?php
     if(isset($_GET['company_id']) && isset($_GET['confirm']) && $_GET['confirm'] == 'true'){
         delete_company($conn,$company['id']);

@@ -2,6 +2,7 @@
 include '../config/db.php';
 include 'fetch_jobs.php';
 include '../functions/activity_log.php';
+
 session_start();
 if (!isset($_SESSION['candidate_id'])) {
     header("Location: ../auth/login.php");

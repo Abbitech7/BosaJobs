@@ -4,9 +4,9 @@
          <h1>Job Details</h1>
      </div>
 
-     <table>
+     <div class="table-wrapper">
+        <table>
          <tr>
-             <th>ID.</th>
              <th>Job Title</th>
              <th>Posted Company</th>
              <th>Industry</th>
@@ -15,15 +15,14 @@
              <th>Salary</th>
              <th>Posted Date</th>
              <th>Deadline</th>
-             <th>Operation</th>
+             <th colspan="3">Operation</th>
          </tr>
          <?php
-            $jobs = fetch_jobs($conn);
+            $jobs = fetch_jobs($conn,'admin');
             if (!empty($jobs)) {
                 foreach ($jobs as $job) {
                     echo '
                     <tr>
-                            <td>' . $job['id'] . '</td>
                             <td>' . $job['title'] . '</td>
                             <td>' . $job['name'] . '</td>
                             <td>' . $job['skill'] . '</td>
@@ -32,6 +31,7 @@
                             <td>' . $job['salary'] . '</td>
                             <td>' . $job['created_at'] . '</td>
                             <td>' . $job['deadline'] . '</td>
+                            <td><a href="job_detail.php?job_id='.$job['id'].'" class="btn" data-translate="">See</a></td>
                             <td><a href="?job_id=' . $job['id'] . '&confirm=true" data-translate="delete-job" class="view-applicants" onclick="return confirm(\'Are you sure you want to delete this job?\')">Remove</a></td>
                           </tr>';
                 }
@@ -41,6 +41,7 @@
             ?>
 
      </table>
+     </div>
      <?php
      if(isset($_GET['job_id']) && isset($_GET['confirm']) && $_GET['confirm'] == 'true'){
         delete_job($conn,$job['id'],$admin_id);
