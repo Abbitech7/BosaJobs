@@ -22,7 +22,7 @@ $job_list = fetch_jobs($conn,$row['field']);
                         <a href="#" class="btn btn-secondary" data-translate="apply">Apply</a>
                     </div>
                 </div>
-            <?php endforeach; ?>
+            <?php endforeach;?>
         <?php endif; ?>
     </div>
 </div>
