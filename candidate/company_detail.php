@@ -1,5 +1,4 @@
 <?php include 'header.php'; ?>
-<?php include 'fetch_company.php'; ?>
 <div class="company-header">
     <?php
     $company_id = $_GET['company_id'];

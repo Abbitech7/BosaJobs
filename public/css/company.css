@@ -140,7 +140,7 @@ button:hover {
     background-color: rgba(65, 105, 225, 0.8);
     transform: translateY(-1px);
 }
-.language-selector {
+.language-selector1 {
     display: flex;
     position: absolute;
     top: 20px;
@@ -158,6 +158,11 @@ button:hover {
     cursor: pointer;
     font-size: 0.8rem;
     transition: all 0.2s ease;
+}
+.job-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .language-btn:hover {
     background: rgba(65, 105, 225, 0.5);
@@ -183,7 +188,6 @@ button:hover {
     font-size: 20px;
     width: fit-content;
 }
-
 .overlay {
     position: fixed;
     top: 0;

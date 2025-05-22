@@ -4,9 +4,9 @@ include 'header.php';
 $is_verified = false;
 $parts = explode('@', $email);
 $domain = strtolower($parts[1]);
-$domain_name=preg_replace('/^www\./', '', $website);
+$domain_name = preg_replace('/^www\./', '', $website);
 
-if($domain == $domain_name){
+if ($domain == $domain_name) {
     $is_verified = true;
 }
 if (isset($_POST['post-job'])) {
@@ -17,11 +17,11 @@ if (isset($_POST['post-job'])) {
     $employment_type  = mysqli_real_escape_string($conn, $_POST['employment_type']);
     $skill            = mysqli_real_escape_string($conn, $_POST['skill']);
     $deadline         = mysqli_real_escape_string($conn, $_POST['deadline']);
-    if($deadline < date('Y-m-d')){
+    if ($deadline < date('Y-m-d')) {
         $status = 'rejected';
-    }elseif($is_verified == false){ 
+    } elseif ($is_verified == false || substr($description, 0, 50) || preg_match('/https?:\/\/[^\s]+/', $description)) {
         $status = 'pending';
-    }else{
+    } else {
         $status = 'approved';
     }
     $query = "INSERT INTO jobs (title,location,description,salary,type,skill,deadline,company_id,status) VALUES ('$title','$location','$description','$salary','$employment_type','$skill','$deadline','$company_id','$status')";
@@ -67,22 +67,28 @@ if (isset($_POST['post-job'])) {
 </div>
 <script>
     var quill = new Quill('#quill-editor', {
-    theme: 'snow',
-    placeholder: 'e.g., Looking for a skilled developer...',
-    modules: {
-      toolbar: [
-        [{ header: [1, 2, 3, false] }],
-        ['bold', 'italic', 'underline'],
-        [{ list: 'ordered' }, { list: 'bullet' }],
-        ['link', 'code-block'],
-        ['clean']
-      ]
-    }
-  });
+        theme: 'snow',
+        placeholder: 'e.g., Looking for a skilled developer...',
+        modules: {
+            toolbar: [
+                [{
+                    header: [1, 2, 3, false]
+                }],
+                ['bold', 'italic', 'underline'],
+                [{
+                    list: 'ordered'
+                }, {
+                    list: 'bullet'
+                }],
+                ['link', 'code-block'],
+                ['clean']
+            ]
+        }
+    });
 
-  document.querySelector('form').addEventListener('submit', function () {
-    var html = quill.root.innerHTML;
-    document.getElementById('job-description').value = html;
-  });
+    document.querySelector('form').addEventListener('submit', function() {
+        var html = quill.root.innerHTML;
+        document.getElementById('job-description').value = html;
+    });
 </script>
 <?php include 'footer.php'; ?>

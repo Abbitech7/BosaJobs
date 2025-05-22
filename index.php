@@ -56,7 +56,7 @@ include 'functions/fetch_companies.php';
         <img src="https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" alt="Professional workspace" class="section-1-bg">
         <div class="container">
             <div class="section-1-content">
-                <h1 data-translate="hero-title">Find Your Dream Job in Jimma</h1>
+                <h1 data-translate="hero-title">Find Your Dream Job in here</h1>
                 <p data-translate="hero-text">Connecting talented professionals with top employers in Jimma City. Start your career journey today with Bossa Jobs.</p>
                 <div class="hero-buttons">
                     <a href="auth/login.php" class="btn btn-primary" data-translate="find-jobs">Find Jobs</a>

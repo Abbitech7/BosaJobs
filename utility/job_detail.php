@@ -139,51 +139,48 @@ $similar_jobs = mysqli_fetch_all($similar_result, MYSQLI_ASSOC);
     </div>
 </section>
 
-    <footer>
+<footer>
         <div class="container">
             <div>
-                <h1>Bossa Jobs</h1>
-                <p style="color: #666; margin: 20px 0; line-height: 1.7;">Connecting talent with opportunity in Jimma City. Our mission is to make career growth accessible to everyone in the region.</p>
+                <h1>Job Portal</h1>
+                <p style="color: rgba(255,255,255,0.7); margin: 20px 0; line-height: 1.7;" data-translate="footer-description">Connecting talent with opportunity in Jimma City. Our mission is to make career growth accessible to everyone in the region.</p>
                 <div class="icon-linked">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/facebook.svg" alt="Facebook"></a>
+                    <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/twitter.svg" alt="Twitter"></a>
+                    <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/linkedin.svg" alt="LinkedIn"></a>
+                    <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/instagram.svg" alt="Instagram"></a>
                 </div>
             </div>
-            
+
             <div>
-                <h1>For Candidates</h1>
+                <h1 data-translate="for-candidates">For Candidates</h1>
                 <ul>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Browse Jobs</a></li>
-                   
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Resume Builder</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Job Alerts</a></li>
-                   
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> <span data-translate="browse-jobs">Browse Jobs</span></a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> <span data-translate="job-alerts">Job Alerts</span></a></li>
                 </ul>
             </div>
-            
+
             <div>
-                <h1>For Employers</h1>
+                <h1 data-translate="for-employers">For Employers</h1>
                 <ul>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Post a Job</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Browse Candidates</a></li>
-       
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> <span data-translate="post-job">Post a Job</span></a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> <span data-translate="browse-candidates">Browse Candidates</span></a></li>
+
+                </ul>
             </div>
-            
+
             <div>
-                <h1>Contact Us</h1>
+                <h1 data-translate="contact-us">Contact Us</h1>
                 <ul>
-                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> Jimma, Ethiopia</a></li>
-                    <li><a href="tel:+251912345678"><i class="fas fa-phone-alt"></i> +251 912 345 678</a></li>
-                    <li><a href="mailto:info@bossajobs.com"><i class="fas fa-envelope"></i> info@bossajobs.com</a></li>
-                  
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> <span>Jimma, Ethiopia</span></a></li>
+                    <li><a href="tel:+251912345678"><i class="fas fa-phone-alt"></i> <span>+251 912 345 678</span></a></li>
+                    <li><a href="mailto:info@bossajobs.com"><i class="fas fa-envelope"></i> <span>info@bossajobs.com</span></a></li>
                 </ul>
             </div>
         </div>
-        
+
         <div class="copyright">
-            <p>&copy; 2024 Bossa Jobs. All Rights Reserved.</p>
+            <p data-translate="copyright">&copy; 2025 Job Portal. All Rights Reserved.</p>
         </div>
     </footer>
 <script src="../public/js/scirpt.js"></script>

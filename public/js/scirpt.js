@@ -162,7 +162,7 @@ function changeLanguage(lang) {
             'how-it-works': 'How It Works',
             'login': 'Login',
             'signup': 'Sign Up',
-            'hero-title': 'Find Your Dream Job in Here',
+            'hero-title': 'Find Your Dream Job Here',
             'hero-text': 'Connecting talented professionals with top employers. Start your career journey today with us',
             'find-jobs': 'Find Jobs',
             'post-job': 'Post a Job',

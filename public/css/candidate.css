@@ -169,7 +169,7 @@ body {
 .radio-group label {
   margin-right: 15px;
 }
-.language-selector {
+.language-selector1 {
   position: absolute;
   top: 20px;
   right: 20px;
@@ -200,6 +200,13 @@ body {
   text-align: center;
   margin-bottom: 20px;
 }
+.company-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+}
+
 .profile-picture {
   width: 150px;
   height: 150px;
@@ -301,6 +308,7 @@ body {
 .company-header {
   display: flex;
   align-items: center;
+  justify-content: start;
   margin-bottom: 30px;
   padding-bottom: 20px;
   border-bottom: 1px solid #eee;
@@ -325,6 +333,7 @@ body {
 .company-info p {
   margin: 5px 0;
   color: #7f8c8d;
+  text-align: left;
 }
 
 .company-details {
@@ -386,12 +395,6 @@ body {
 .job-title {
   color: #2c3e50;
   margin-bottom: 5px;
-}
-
-.company-info {
-  display: flex;
-  align-items: center;
-  margin-bottom: 15px;
 }
 
 .company-logo {

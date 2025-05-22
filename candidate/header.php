@@ -24,12 +24,13 @@ if(mysqli_num_rows($result)>0){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Candidate Dashboard</title>
     <link rel="stylesheet" href="../public/css/candidate.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
     <button class="menu-toggle">☰</button>
     <div class="overlay"></div>
-    <div class="language-selector">
+    <div class="language-selector1">
         <button class="language-btn active" data-lang="en">English</button>
         <button class="language-btn" data-lang="om">Afaan Oromoo</button>
         <button class="language-btn" data-lang="am">አማርኛ</button>

@@ -4,11 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us | CareerConnect</title>
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-    <!-- Mapbox GL JS -->
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
     <link rel="stylesheet" href="../public/css/about.css">
@@ -197,7 +194,6 @@
         </section>
     </div>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div>
@@ -255,8 +251,6 @@
             navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
             authButtons.style.display = authButtons.style.display === 'flex' ? 'none' : 'flex';
         });
-
-        // Responsive adjustment
         window.addEventListener('resize', () => {
             if (window.innerWidth > 768) {
                 navLinks.style.display = 'flex';
@@ -267,58 +261,52 @@
             }
         });
 
-        // Initialize Map
         mapboxgl.accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
         const map = new mapboxgl.Map({
             container: 'map',
             style: 'mapbox://styles/mapbox/streets-v11',
-            center: [-122.4194, 37.7749], // SF coordinates
+            center: [-122.4194, 37.7749], 
             zoom: 12
         });
 
-        // Add marker
         new mapboxgl.Marker()
             .setLngLat([-122.4194, 37.7749])
             .addTo(map);
 
-        // FAQ Accordion
         const faqItems = document.querySelectorAll('.faq-item');
         
         faqItems.forEach(item => {
             const question = item.querySelector('.faq-question');
             
             question.addEventListener('click', () => {
-                // Close all other items
                 faqItems.forEach(otherItem => {
                     if (otherItem !== item) {
                         otherItem.classList.remove('active');
                     }
                 });
                 
-                // Toggle current item
                 item.classList.toggle('active');
             });
         });
+        
 
-        // Form Submission
         const contactForm = document.getElementById('contactForm');
         
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
-            // Get form values
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             const subject = document.getElementById('subject').value;
             const message = document.getElementById('message').value;
             
-            // In a real app, you would send this data to your server
+            
             console.log('Form submitted:', { name, email, subject, message });
             
-            // Show success message
+    
             alert(`Thank you, ${name}! Your message has been sent. We'll get back to you soon.`);
             
-            // Reset form
+        
             contactForm.reset();
         });
     </script>

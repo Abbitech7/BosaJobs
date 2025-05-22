@@ -37,6 +37,7 @@ if (mysqli_num_rows($result) > 0) {
     <link rel="stylesheet" href="../public/css/company.css">
     <link rel="stylesheet" href="../public/css/applicants.css">
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
 </head>
 
@@ -44,7 +45,7 @@ if (mysqli_num_rows($result) > 0) {
     <button class="menu-toggle">☰</button>
     <div class="overlay"></div>
 
-    <div class="language-selector">
+    <div class="language-selector1">
         <button class="language-btn active" data-lang="en">English</button>
         <button class="language-btn" data-lang="om">Afaan Oromoo</button>
         <button class="language-btn" data-lang="am">አማርኛ</button>
